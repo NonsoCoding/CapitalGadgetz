@@ -13,9 +13,15 @@ const BestSellers = () => {
               performance, and value.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="relative w-full">
   <img className="h-full md:h-full md:h-120" src="./watch1.jpg" alt="" />
+  <div className="absolute bottom-1 left-0.5 right-0 w-[98%] rounded-b-[12px] bg-black/30 bg-opacity-50 p-4">
+    <p className="text-white font-medium">Watch</p>
+  </div>
+</div>
+          <div className="relative w-full">
+  <img className="h-100 md:h-full md:h-120" src="./watch1.jpg" alt="" />
   <div className="absolute bottom-1 left-0.5 right-0 w-[98%] rounded-b-[12px] bg-black/30 bg-opacity-50 p-4">
     <p className="text-white font-medium">Watch</p>
   </div>
@@ -32,13 +38,7 @@ const BestSellers = () => {
     <p className="text-white font-medium">Watch</p>
   </div>
 </div>
-          <div className="relative w-full">
-  <img className="h-full md:h-full md:h-120" src="./watch1.jpg" alt="" />
-  <div className="absolute bottom-1 left-0.5 right-0 w-[98%] rounded-b-[12px] bg-black/30 bg-opacity-50 p-4">
-    <p className="text-white font-medium">Watch</p>
-  </div>
-</div>
-          </div>
+          </div> */}
 
         </div>
       </div>

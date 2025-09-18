@@ -6,8 +6,8 @@ const About = () => {
   return (
     <section>
       <div className="mx-auto w-[85%] flex flex-col gap-15">
-        <div className="mx-auto w-[70%] items-center flex flex-col gap-10">
-          <p className="font-bold text-4xl">
+        <div className="mx-auto w-full lg:w-[70%] items-center flex flex-col gap-10">
+          <p className="font-bold text-2xl lg:text-3xl">
             ABOUT Capital<span className="text-[#3498DB]">Gadgetz</span>
           </p>
           <p className="text-center">

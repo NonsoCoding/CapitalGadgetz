@@ -5,8 +5,8 @@ interface ICopyRightProps {
 const CopyRight = ({ year }: ICopyRightProps) => {
   return (
     <section className="w-full">
-      <div className="w-full justify-center flex items-center py-7 bg-[#3498DB]">
-        <p className="font-semibold text-white">
+      <div className="w-full justify-center flex items-center py-2 bg-[#3498DB]">
+        <p className="font-semibold text-white text-[12px]">
           @{year} CapitalGadgetz. Shop With Us
         </p>
       </div>

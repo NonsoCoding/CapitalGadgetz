@@ -15,9 +15,9 @@ const Footer = () => {
     <section className="bg-[#BBDEFB]">
       <div className="w-[85%] py-10 mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-10 lg:gap-0">
         <div className="gap-8 flex flex-col">
-          <p className="text-2xl font-semibold">Contact Us</p>
-          <div className="flex gap-4 flex-col">
-            <div className="flex gap-6">
+          <p className="text-xl font-semibold">Contact Us</p>
+          <div className="flex gap-4 flex-col text-[14px]">
+            <div className="flex gap-6 text-[14px]">
               <LocationEdit />
               <p>Banes Plaza, Opposite Zenith bank, Wuse, Abuja, Nigeria</p>
             </div>
@@ -32,8 +32,8 @@ const Footer = () => {
           </div>
         </div>
         <div className="gap-8 flex flex-col">
-          <p className="text-2xl font-semibold">Quick Links</p>
-          <div className="flex flex-col">
+          <p className="text-xl font-semibold">Quick Links</p>
+          <div className="flex flex-col text-[14px]">
             <Link
               className="pb-2 hover:border-b-1 border-[#3498DB] w-fit"
               href={"./"}
@@ -62,7 +62,7 @@ const Footer = () => {
         </div>
         <div className="gap-14 flex flex-col">
           <div className="flex flex-col gap-8">
-            <p className="text-2xl font-semibold">Social Handles</p>
+            <p className="text-xl font-semibold">Social Handles</p>
             <div className="flex gap-3">
               <Instagram />
               <Twitter />
@@ -70,8 +70,8 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col gap-8">
-            <p className="text-2xl font-semibold">Customer Service</p>
-            <div className="flex flex-col gap-2">
+            <p className="text-xl font-semibold">Customer Service</p>
+            <div className="flex flex-col gap-2 text-[14px]">
               <button className="pb-2 hover:border-b-1 border-[#3498DB] w-fit">
                 Terms of Use
               </button>
@@ -85,12 +85,13 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col gap-8">
-          <p className="font-semibold text-2xl">
+          <p className="font-semibold text-xl">
             Give us feedback from your purchase
           </p>
-          <p>
+          <p className="text-[14px]">
             Buy a gadget today to be the first to receive latest news about our products.
           </p>
+          <input type="email" />
           <button className="bg-[#3498DB] w-40 h-10 rounded-sm">
             <p className="text-white">Subscribe</p>
           </button>

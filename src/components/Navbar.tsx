@@ -1,50 +1,74 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
-const Navbar = ({}) => {
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = ["Home", "About", "Product", "Contact"];
+
   return (
-    <section className="bg-white shadow">
-      <div className="w-[85%] mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-1">
-          <img className="h-7 w-7 object-contain" src="./Vector.png" alt="" />
-          <p className="font-bold text-xl">
-            Capital<span className="text-[#3498DB]">Gadget</span>
+    <header className="bg-white shadow-md sticky top-0 z-50">
+      <div className="w-[92%] mx-auto flex justify-between items-center py-3 lg:py-4">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <img
+            className="h-7 w-7 object-contain"
+            src="./Vector.png"
+            alt="Logo"
+          />
+          <p className="font-bold text-lg tracking-tight">
+            Capital
+            <span className="text-[#3498DB]">Gadget</span>
           </p>
         </div>
-        <nav className="flex">
-          <Link
-            className="hover:bg-[#3498DB] py-6 px-10 hover:text-white"
-            href={"./"}
-          >
-            Home
-          </Link>
-          <Link
-            className="hover:bg-[#3498DB] py-6 px-10 hover:text-white"
-            href={"./"}
-          >
-            About
-          </Link>
-          <Link
-            className="hover:bg-[#3498DB] py-6 px-10 hover:text-white"
-            href={"./"}
-          >
-            Product
-          </Link>
-          <Link
-            className="hover:bg-[#3498DB] py-6 px-10 hover:text-white"
-            href={"./"}
-          >
-            Contact
-          </Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navItems.map((item, idx) => (
+            <Link
+              key={idx}
+              href={"/"}
+              className="text-sm font-medium text-gray-700 hover:text-[#3498DB] transition-colors duration-200 relative group"
+            >
+              {item}
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#3498DB] transition-all duration-300 group-hover:w-full" />
+            </Link>
+          ))}
+          <button className="ml-4 bg-[#3498DB] px-5 py-2 rounded-lg text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200">
+            Contact Me
+          </button>
         </nav>
-        <Link
-          className="bg-[#3498DB] px-8 py-3 text-white rounded-xl"
-          href={"./"}
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-[#3498DB] p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
         >
-          Contact me
-        </Link>
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
-    </section>
+
+      {/* Mobile Nav */}
+      {isOpen && (
+        <div className="md:hidden flex flex-col items-center gap-2 bg-white border-t shadow-lg py-4 animate-slideDown">
+          {navItems.map((item, idx) => (
+            <Link
+              key={idx}
+              href={"/"}
+              onClick={() => setIsOpen(false)}
+              className="w-full text-center py-2 text-gray-700 font-medium hover:bg-[#3498DB] hover:text-white transition-colors duration-200 rounded-md"
+            >
+              {item}
+            </Link>
+          ))}
+          <button className="mt-3 bg-[#3498DB] px-6 py-2 rounded-lg text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200">
+            Contact Me
+          </button>
+        </div>
+      )}
+    </header>
   );
 };
 
