@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import HooksSection from "@/components/HooksSection";
 import Navbar from "@/components/Navbar";
 import OurCustomers from "@/components/OurCustomers";
-import OurSpecials from "@/components/OurSpecials";
 
 export default function Home() {
   return (
