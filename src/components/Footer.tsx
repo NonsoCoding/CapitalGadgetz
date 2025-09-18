@@ -1,0 +1,103 @@
+"use client";
+
+import {
+  Facebook,
+  Instagram,
+  LocationEdit,
+  Mail,
+  Phone,
+  Twitter,
+} from "lucide-react";
+import Link from "next/link";
+
+const Footer = () => {
+  return (
+    <section className="bg-[#BBDEFB]">
+      <div className="w-[85%] py-10 mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-10 lg:gap-0">
+        <div className="gap-8 flex flex-col">
+          <p className="text-2xl font-semibold">Contact Us</p>
+          <div className="flex gap-4 flex-col">
+            <div className="flex gap-6">
+              <LocationEdit />
+              <p>Banes Plaza, Opposite Zenith bank, Wuse, Abuja, Nigeria</p>
+            </div>
+            <div className="flex gap-6">
+              <Phone />
+              <p>+234 911 037 9619</p>
+            </div>
+            <div className="flex gap-6">
+              <Mail />
+              <p>capitalgadgetz@gmail.com</p>
+            </div>
+          </div>
+        </div>
+        <div className="gap-8 flex flex-col">
+          <p className="text-2xl font-semibold">Quick Links</p>
+          <div className="flex flex-col">
+            <Link
+              className="pb-2 hover:border-b-1 border-[#3498DB] w-fit"
+              href={"./"}
+            >
+              Home
+            </Link>
+            <Link
+              className="py-2 hover:border-b-1 border-[#3498DB] w-fit"
+              href={"./"}
+            >
+              About
+            </Link>
+            <Link
+              className="py-2 hover:border-b-1 border-[#3498DB] w-fit"
+              href={"./"}
+            >
+              Product
+            </Link>
+            <Link
+              className="py-2 hover:border-b-1 border-[#3498DB] w-fit"
+              href={"./"}
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+        <div className="gap-14 flex flex-col">
+          <div className="flex flex-col gap-8">
+            <p className="text-2xl font-semibold">Social Handles</p>
+            <div className="flex gap-3">
+              <Instagram />
+              <Twitter />
+              <Facebook />
+            </div>
+          </div>
+          <div className="flex flex-col gap-8">
+            <p className="text-2xl font-semibold">Customer Service</p>
+            <div className="flex flex-col gap-2">
+              <button className="pb-2 hover:border-b-1 border-[#3498DB] w-fit">
+                Terms of Use
+              </button>
+              <button className="pb-2 hover:border-b-1 border-[#3498DB] w-fit">
+                FQA
+              </button>
+              <button className="pb-2 hover:border-b-1 border-[#3498DB] w-fit">
+                Report Issue
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-8">
+          <p className="font-semibold text-2xl">
+            Give us feedback from your purchase
+          </p>
+          <p>
+            Buy a gadget today to be the first to receive latest news about our products.
+          </p>
+          <button className="bg-[#3498DB] w-40 h-10 rounded-sm">
+            <p className="text-white">Subscribe</p>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Footer;
