@@ -1,13 +1,21 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { CarIcon, Package, ShieldCheck, Headphones } from "lucide-react";
 
 const About = () => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="mx-auto w-[90%] lg:w-[80%] flex flex-col gap-16">
+        
         {/* Heading */}
-        <div className="mx-auto text-center max-w-2xl flex flex-col gap-6">
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="mx-auto text-center max-w-2xl flex flex-col gap-6"
+        >
           <p className="font-bold text-2xl lg:text-3xl">
             ABOUT Capital<span className="text-[#3498DB]">Gadgetz</span>
           </p>
@@ -19,7 +27,13 @@ const About = () => {
           </p>
 
           {/* Owner Picture */}
-          <div className="flex flex-col items-center gap-3 mt-6">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center gap-3 mt-6"
+          >
             <img
               src="./CEO.jpg" // replace with actual image path
               alt="Owner"
@@ -29,66 +43,54 @@ const About = () => {
               Obi Ifeanyi Kasimir
             </p>
             <p className="text-sm text-gray-500">Founder & CEO</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Card 1 */}
-          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col gap-4 text-center">
-            <div className="h-16 w-16 mx-auto rounded-xl bg-[#3498DB] flex items-center justify-center">
-              <CarIcon className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="font-semibold text-lg text-gray-900">
-              Fast Delivery
-            </h3>
-            <p className="text-sm text-gray-600">
-              Quick and reliable shipping, so you get your gadgets when you need
-              them — with real-time tracking every step of the way.
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col gap-4 text-center">
-            <div className="h-16 w-16 mx-auto rounded-xl bg-[#3498DB] flex items-center justify-center">
-              <Package className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="font-semibold text-lg text-gray-900">
-              Quality Products
-            </h3>
-            <p className="text-sm text-gray-600">
-              We handpick only top-quality electronics and accessories that are
-              durable, innovative, and worth your investment.
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col gap-4 text-center">
-            <div className="h-16 w-16 mx-auto rounded-xl bg-[#3498DB] flex items-center justify-center">
-              <ShieldCheck className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="font-semibold text-lg text-gray-900">
-              Secure Shopping
-            </h3>
-            <p className="text-sm text-gray-600">
-              Shop with confidence — our secure checkout and trusted payment
-              methods keep your information safe.
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col gap-4 text-center">
-            <div className="h-16 w-16 mx-auto rounded-xl bg-[#3498DB] flex items-center justify-center">
-              <Headphones className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="font-semibold text-lg text-gray-900">
-              24/7 Support
-            </h3>
-            <p className="text-sm text-gray-600">
-              Our friendly support team is always ready to assist you — before,
-              during, and after your purchase.
-            </p>
-          </div>
+          {[
+            {
+              icon: <CarIcon className="h-8 w-8 text-white" />,
+              title: "Fast Delivery",
+              desc: "Quick and reliable shipping, so you get your gadgets when you need them — with real-time tracking every step of the way.",
+            },
+            {
+              icon: <Package className="h-8 w-8 text-white" />,
+              title: "Quality Products",
+              desc: "We handpick only top-quality electronics and accessories that are durable, innovative, and worth your investment.",
+            },
+            {
+              icon: <ShieldCheck className="h-8 w-8 text-white" />,
+              title: "Secure Shopping",
+              desc: "Shop with confidence — our secure checkout and trusted payment methods keep your information safe.",
+            },
+            {
+              icon: <Headphones className="h-8 w-8 text-white" />,
+              title: "24/7 Support",
+              desc: "Our friendly support team is always ready to assist you — before, during, and after your purchase.",
+            },
+          ].map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{
+                delay: index * 0.2,
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all flex flex-col gap-4 text-center"
+            >
+              <div className="h-16 w-16 mx-auto rounded-xl bg-[#3498DB] flex items-center justify-center">
+                {card.icon}
+              </div>
+              <h3 className="font-semibold text-lg text-gray-900">
+                {card.title}
+              </h3>
+              <p className="text-sm text-gray-600">{card.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
