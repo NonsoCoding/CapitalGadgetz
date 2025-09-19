@@ -77,7 +77,7 @@ const Footer = () => {
           <p className="text-[14px]">
             Buy a gadget today to be the first to receive latest news about our products.
           </p>
-          <input type="email" />
+          <input type="email" name="email" placeholder="email" className="border-1 text-[13px] px-2 py-3 rounded-sm w-full border-gray-400 shadow-xl"/>
           <button className="bg-[#3498DB] w-40 h-10 rounded-sm">
             <p className="text-white">Subscribe</p>
           </button>
