@@ -6,7 +6,12 @@ import { Menu, X } from "lucide-react";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = ["Home", "About", "Product", "Contact"];
+  const navItems = [
+    {name: "Home", href: "#home"}, 
+    {name: "About", href: "#about"}, 
+    {name: "Product", href: "#product"}, 
+    {name: "Contact", href: "#contact"}, 
+  ];
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -27,14 +32,14 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navItems.map((item, idx) => (
-            <Link
+            <a
               key={idx}
-              href={"/"}
+              href={item.href}
               className="text-sm font-medium text-gray-700 hover:text-[#3498DB] transition-colors duration-200 relative group"
             >
-              {item}
+              {item.name}
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#3498DB] transition-all duration-300 group-hover:w-full" />
-            </Link>
+            </a>
           ))}
           <button className="ml-4 bg-[#3498DB] px-5 py-2 rounded-lg text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200">
             Contact Me
@@ -58,14 +63,14 @@ const Navbar = () => {
       >
         <div className="flex flex-col items-center pt-16 gap-4">
           {navItems.map((item, idx) => (
-            <Link
+            <a
               key={idx}
-              href={"/"}
+              href={item.href}
               onClick={() => setIsOpen(false)}
               className="w-full text-center py-2 text-gray-700 font-medium hover:bg-[#3498DB] hover:text-white transition-colors duration-200 rounded-md"
             >
-              {item}
-            </Link>
+              {item.name}
+            </a>
           ))}
           <button className="mt-3 bg-[#3498DB] px-6 py-2 rounded-lg text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200">
             Contact Me

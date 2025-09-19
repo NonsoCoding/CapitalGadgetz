@@ -22,7 +22,7 @@ const BestSellers = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section id="product" className="py-16 bg-gray-50 overflow-x-hidden">
       <div className="w-[85%] mx-auto flex flex-col items-center gap-12">
         {/* Section Heading */}
         <motion.div
