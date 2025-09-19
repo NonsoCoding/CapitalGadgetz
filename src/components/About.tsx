@@ -6,7 +6,7 @@ import { CarIcon, Package, ShieldCheck, Headphones } from "lucide-react";
 const About = () => {
   return (
     <section id="about" className="py-16 bg-gray-50 overflow-x-hidden">
-      <div className="mx-auto w-[90%] lg:w-[80%] flex flex-col gap-16">
+      <div className="mx-auto w-[90%]  lg:w-[80%] flex flex-col gap-16">
         
         {/* Heading */}
         <motion.div

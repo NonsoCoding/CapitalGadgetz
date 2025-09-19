@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section id="home" className="mt-15 md:mt-10 lg:mt-0 overflow-x-hidden">
+    <section id="home" className="mt-7 md:mt-10 lg:mt-0 overflow-x-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-[85%] mx-auto items-center">
         
         {/* Left Content */}

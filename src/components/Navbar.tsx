@@ -35,7 +35,7 @@ const Navbar = () => {
             <a
               key={idx}
               href={item.href}
-              className="text-sm font-medium text-gray-700 hover:text-[#3498DB] transition-colors duration-200 relative group"
+              className="uppercase text-[11px] font-medium text-gray-700 hover:text-[#3498DB] transition-colors duration-200 relative group"
             >
               {item.name}
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#3498DB] transition-all duration-300 group-hover:w-full" />
@@ -48,7 +48,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-[#3498DB] p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="md:hidden z-999 text-[#3498DB] p-2 rounded-lg hover:bg-gray-100 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -61,18 +61,19 @@ const Navbar = () => {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col items-center pt-16 gap-4">
+        <div className="flex flex-col items-center pt-16 gap-2">
           {navItems.map((item, idx) => (
             <a
               key={idx}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="w-full text-center py-2 text-gray-700 font-medium hover:bg-[#3498DB] hover:text-white transition-colors duration-200 rounded-md"
+              className="w-[20%] h-8 text-center uppercase text-[11px] hover:text-[#3498DB] transition-colors duration-200 group py-2 text-gray-700 font-medium relative"
             >
               {item.name}
+               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#3498DB] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <button className="mt-3 bg-[#3498DB] px-6 py-2 rounded-lg text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200">
+          <button className="mt-3 bg-[#3498DB] px-6 py-2 rounded-sm text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200">
             Contact Me
           </button>
         </div>
