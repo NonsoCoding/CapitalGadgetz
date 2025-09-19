@@ -1,7 +1,11 @@
 "use client";
-
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Swiper as SwiperType } from 'swiper';
+import { useRef } from 'react';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const testimonials = [
   {
@@ -31,129 +35,162 @@ const testimonials = [
 ];
 
 const OurCustomers = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const swiperRef = useRef<SwiperType | null>(null);
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
+  const goToPrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
   };
 
-  const prevTestimonial = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
+  const goToNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
   };
-
-  const currentTestimonial = testimonials[currentIndex];
-  const prevTestimonialData = testimonials[currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1];
-  const nextTestimonialData = testimonials[currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-xl lg:text-4xl font-bold text-gray-900 mb-2">Our Customers Says</h2>
+          <h2 className="text-xl lg:text-4xl font-bold text-gray-900 mb-2">
+            Our Customers Says
+          </h2>
         </div>
 
-        {/* Testimonial Carousel */}
-        <div className="relative flex items-center justify-center">
-          {/* Left Navigation */}
-          <button
-            onClick={prevTestimonial}
-            className="absolute left-0 z-10 bg-blue-400 hover:bg-blue-500 text-white p-3 rounded-full shadow-lg transition-colors duration-200"
+        {/* Swiper Carousel */}
+        <div className="relative">
+          <Swiper
+           onSwiper={(swiper) => {
+    swiperRef.current = swiper;
+  }}
+  modules={[Navigation, Pagination, Autoplay]}
+  spaceBetween={20}
+  slidesPerView={3}
+  centeredSlides={true}
+  loop={true}
+  navigation={false}
+  pagination={{ 
+    clickable: true,
+    bulletClass: 'swiper-pagination-bullet !bg-blue-400 !opacity-50',
+    bulletActiveClass: 'swiper-pagination-bullet-active !bg-blue-600 !opacity-100'
+  }}
+  autoplay={{ delay: 5000 }}
+  className="overflow-hidden"  
+  breakpoints={{
+    320: {
+      slidesPerView: 1,        // 👈 full width on mobile
+      spaceBetween: 10,
+      centeredSlides: false
+    },
+    480: {
+      slidesPerView: 1,        // 👈 keep safe
+      spaceBetween: 15
+    },
+    640: {
+      slidesPerView: 1.5,
+      spaceBetween: 20
+    },
+    768: {
+      slidesPerView: 1.8,
+      spaceBetween: 25
+    },
+    1024: {
+      slidesPerView: 2.5,
+      spaceBetween: 30
+    },
+    1280: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    }
+  }}
           >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+            {testimonials.map((t) => (
+              <SwiperSlide key={t.id}>
+                {({ isActive }) => (
+                  <div 
+                    className={`bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-xl text-center relative transition-all duration-300 transform ${
+                      isActive 
+                        ? 'scale-100 opacity-100' 
+                        : 'scale-90 opacity-60 blur-sm hover:opacity-80'
+                    }`}
+                  >
+                    {/* Quotes */}
+                    <div className="text-4xl md:text-6xl lg:text-8xl text-blue-400 mb-2 md:mb-4 absolute -top-1 md:-top-2 lg:-top-4 left-1 md:left-2 lg:left-4">
+                      <p></p>
+                    </div>
+                    <div className="text-4xl md:text-6xl lg:text-8xl text-blue-400 mb-2 md:mb-4 absolute -bottom-1 md:-bottom-2 lg:-bottom-4 right-1 md:right-2 lg:right-4 rotate-180">
+                      <p></p>
+                    </div>
 
-          {/* Left Preview Card */}
-          <div className="hidden lg:block opacity-30 transform scale-75 -mr-8 z-0">
-            <div className="bg-white rounded-2xl p-6 shadow-md w-80 text-center">
-              <div className="text-6xl text-gray-300 mb-4">
-                <p>{`"`}</p>
-              </div>
-              <p className="text-gray-600 text-sm line-clamp-3">{prevTestimonialData.text}</p>
-              <div className="mt-4">
-                <img
-                  src={prevTestimonialData.image}
-                  alt={prevTestimonialData.name}
-                  className="w-16 h-16 rounded-full mx-auto mb-2 object-cover"
-                />
-                <h4 className="font-semibold text-gray-800">{prevTestimonialData.name}</h4>
-              </div>
-            </div>
+                    {/* Profile Image */}
+                    <div className="mb-4 md:mb-6">
+                      <img
+                        src={t.image}
+                        alt={t.name}
+                        className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full mx-auto object-cover border-2 md:border-4 border-blue-100"
+                      />
+                    </div>
+
+                    {/* Name */}
+                    <h3 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-4">
+                      {t.name}
+                    </h3>
+
+                    {/* Testimonial Text */}
+                    <p className="text-gray-700 leading-relaxed text-xs md:text-sm lg:text-base px-2">
+                      {t.text}
+                    </p>
+                  </div>
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation */}
+          <div className="flex justify-center mt-6 md:mt-8 space-x-4">
+            <button 
+              onClick={goToPrev}
+              className="group bg-white hover:bg-blue-50 rounded-full p-2 md:p-3 shadow-lg transition-all duration-200 border border-gray-200 hover:shadow-xl"
+              aria-label="Previous testimonial"
+            >
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-blue-600 group-hover:text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button 
+              onClick={goToNext}
+              className="group bg-white hover:bg-blue-50 rounded-full p-2 md:p-3 shadow-lg transition-all duration-200 border border-gray-200 hover:shadow-xl"
+              aria-label="Next testimonial"
+            >
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-blue-600 group-hover:text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
-
-          {/* Main Testimonial Card */}
-          <div className="z-20 mx-8">
-            <div className="bg-white rounded-2xl p-8 shadow-xl w-96 text-center relative">
-              <div className="text-8xl text-blue-400 mb-4 absolute -top-4 left-4">
-                <p>{`"`}</p>
-              </div>
-              <div className="text-8xl text-blue-400 mb-4 absolute -bottom-4 right-4 rotate-180"><p>{`"`}</p></div>
-              
-              {/* Profile Image */}
-              <div className="mb-6">
-                <img
-                  src={currentTestimonial.image}
-                  alt={currentTestimonial.name}
-                  className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-blue-100"
-                />
-              </div>
-              
-              {/* Name */}
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                {currentTestimonial.name}
-              </h3>
-              
-              {/* Testimonial Text */}
-              <p className="text-gray-700 leading-relaxed text-base">
-                {currentTestimonial.text}
-              </p>
-            </div>
-          </div>
-
-          {/* Right Preview Card */}
-          <div className="hidden lg:block opacity-30 transform scale-75 -ml-8 z-0">
-            <div className="bg-white rounded-2xl p-6 shadow-md w-80 text-center">
-              <div className="text-6xl text-gray-300 mb-4">
-                <p>{`"`}</p>
-              </div>
-              <p className="text-gray-600 text-sm line-clamp-3">{nextTestimonialData.text}</p>
-              <div className="mt-4">
-                <img
-                  src={nextTestimonialData.image}
-                  alt={nextTestimonialData.name}
-                  className="w-16 h-16 rounded-full mx-auto mb-2 object-cover"
-                />
-                <h4 className="font-semibold text-gray-800">{nextTestimonialData.name}</h4>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Navigation */}
-          <button
-            onClick={nextTestimonial}
-            className="absolute right-0 z-10 bg-blue-400 hover:bg-blue-500 text-white p-3 rounded-full shadow-lg transition-colors duration-200"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Dots Indicator */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'
-              }`}
-            />
-          ))}
         </div>
       </div>
+
+      {/* Custom styles */}
+      <style jsx global>{`
+        .swiper-pagination {
+          position: static !important;
+          margin-top: 2rem;
+        }
+        
+        .swiper-pagination-bullet {
+          width: 12px !important;
+          height: 12px !important;
+          margin: 0 6px !important;
+          border-radius: 50% !important;
+          transition: all 0.3s ease !important;
+        }
+        
+        .swiper-pagination-bullet-active {
+          transform: scale(1.2) !important;
+        }
+      `}</style>
     </section>
   );
 };
