@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HooksSection = () => {
   return (
-    <section className="mt-15 md:mt-10 lg:mt-0 flex flex-col gap-10 overflow-x-hidden">
+    <section className="pt-15 pb-10 md:pt-10 lg:mt-0 bg-black/20 flex flex-col gap-10 overflow-x-hidden">
       {/* First Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-[85%] mx-auto items-center gap-6">
         {/* Text Side */}

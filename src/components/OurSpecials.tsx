@@ -3,7 +3,7 @@
 
 const OurSpecials = () => {
     return (
-        <section className="w-[85%] py-15 flex flex-col mx-auto gap-10 overflow-x-hidden">
+        <section className="w-[85%] py-15 flex flex-col mx-auto gap-10 overflow-x-hidden bg-black/30">
             <p className="font-bold text-4xl text-center">Our Specials</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <div className="flex flex-col gap-8 mx-auto">
