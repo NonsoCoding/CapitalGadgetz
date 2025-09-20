@@ -117,7 +117,7 @@ const OurCustomers = () => {
               <SwiperSlide key={fb.id}>
                 {({ isActive }) => (
                   <div 
-                    className={`bg-white rounded-2xl p-6 md:p-6 lg:p-8 shadow-xl text-center relative transition-all duration-300 transform ${
+                    className={`bg-white p-6 md:p-6 lg:p-8 shadow-2xl text-center relative transition-all duration-300 transform ${
                       isActive 
                         ? 'scale-100 opacity-100' 
                         : 'scale-90 opacity-60 blur-sm hover:opacity-80'

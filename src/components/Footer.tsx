@@ -12,7 +12,6 @@ import {
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { db } from "./settings/FirebaseSettings";
-import { log } from "console";
 
 interface FormData {
   name: string;
@@ -143,7 +142,7 @@ const Footer = () => {
              value={formData.name}
              onChange={handleChange}
              required
-             className="border text-[13px] px-3 py-2 rounded-sm w-full border-gray-400 shadow-md"
+             className="border text-[16px] px-3 py-2 rounded-sm w-full border-gray-400 shadow-md"
             />
             <input
              type="email"
@@ -152,7 +151,7 @@ const Footer = () => {
              value={formData.email}
              onChange={handleChange}
              required
-             className="border text-[13px] px-3 py-2 rounded-sm w-full border-gray-400 shadow-md"
+             className="border text-[16px] px-3 py-2 rounded-sm w-full border-gray-400 shadow-md"
             />
             <textarea
               name="message"
@@ -160,7 +159,7 @@ const Footer = () => {
               value={formData.message}
               onChange={handleChange}
               required
-              className="border text-[13px] px-3 py-2 rounded-sm w-full border-gray-400 shadow-md h-24 resize-none"
+              className="border text-[16px] px-3 py-2 rounded-sm w-full border-gray-400 shadow-md h-24 resize-none"
             />
          <button
               type="submit"
