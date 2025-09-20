@@ -107,7 +107,7 @@ const OurCustomers = () => {
   autoplay={feedbacks.length > 1 ? { delay: 5000 } : false} // 👈 no autoplay if only 1
   className="overflow-hidden"
   breakpoints={{
-    320: { slidesPerView: 1, spaceBetween: 10, centeredSlides: false },
+    320: { slidesPerView: 1, spaceBetween: 15, centeredSlides: false },
     640: { slidesPerView: feedbacks.length === 1 ? 1 : 1.5 },
     1024: { slidesPerView: feedbacks.length === 1 ? 1 : 2.5 },
     1280: { slidesPerView: feedbacks.length === 1 ? 1 : 3 },
@@ -117,7 +117,7 @@ const OurCustomers = () => {
               <SwiperSlide key={fb.id}>
                 {({ isActive }) => (
                   <div 
-                    className={`bg-white p-6 md:p-6 lg:p-8 shadow-2xl text-center relative transition-all duration-300 transform ${
+                    className={`bg-white p-6 md:p-6 lg:p-8 shadow text-center relative transition-all duration-300 transform rounded-xl md:rounded-2xl ${
                       isActive 
                         ? 'scale-100 opacity-100' 
                         : 'scale-90 opacity-60 blur-sm hover:opacity-80'
@@ -149,7 +149,7 @@ const OurCustomers = () => {
                     <p className="text-gray-700 leading-relaxed text-xs md:text-sm lg:text-base px-2">
                       {fb.message}
                     </p>
-                    <p className="text-gray-700 leading-relaxed text-xs md:text-sm lg:text-base px-2">
+                    <p className="text-gray-500 leading-relaxed text-xs md:text-sm lg:text-base px-2 mt-2">
                       {fb.createdAt?.toDate().toLocaleDateString()}
                     </p>
                   </div>
