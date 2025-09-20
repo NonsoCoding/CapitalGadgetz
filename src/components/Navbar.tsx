@@ -41,9 +41,13 @@ const Navbar = () => {
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#3498DB] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <button className="ml-4 bg-[#3498DB] px-5 py-2 rounded-lg text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200">
+          <Link className="ml-4 bg-[#3498DB] px-5 py-2 rounded-lg text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200"
+           href={"https://wa.me/2349110379619"}
+              target="_blank"
+              rel="noopener noreferrer"
+          >
             Contact Me
-          </button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -73,9 +77,13 @@ const Navbar = () => {
                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#3498DB] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <button className="mt-3 bg-[#3498DB] px-6 py-2 rounded-sm text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200">
+          <Link className="mt-3 bg-[#3498DB] px-6 py-2 rounded-sm text-sm font-medium text-white shadow hover:bg-[#2980B9] transition-colors duration-200"
+           href={"https://wa.me/2349110379619"}
+              target="_blank"
+              rel="noopener noreferrer"
+          >
             Contact Me
-          </button>
+          </Link>
         </div>
       </div>
 

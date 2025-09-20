@@ -21,13 +21,28 @@ const Footer = () => {
               <LocationEdit />
               <p>Banex Plaza, Opposite Zenith bank, Wuse, Abuja, Nigeria</p>
             </div>
-            <div className="flex gap-6">
+            <div>
+            <div className="flex gap-6 items-center">
               <Phone />
-              <p>+234 911 037 9619</p>
+              <div>
+                 <p className="container text-[14px]">Call or contact me on WhatsApp</p>
+              <Link 
+              href={"https://wa.me/2349110379619"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#3498DB] font-bold hover:border-b-2 border-[#3498DB]"
+              >
+              +234 911 037 9619
+              </Link>
+              </div>
+            </div>
             </div>
             <div className="flex gap-6">
               <Mail />
-              <p>capitalgadgetz@gmail.com</p>
+              <Link
+              href={"mailto:capitalgadgetz@gmail.com"}
+              className="text-[#3498DB] font-bold hover:border-b-2 border-[#3498DB]"
+              >capitalgadgetz@gmail.com</Link>
             </div>
           </div>
         </div>
@@ -79,7 +94,7 @@ const Footer = () => {
           </p>
           <input type="email" name="email" placeholder="email" className="border-1 text-[13px] px-2 py-3 rounded-sm w-full border-gray-400 shadow-xl"/>
           <button className="bg-[#3498DB] w-40 h-10 rounded-sm">
-            <p className="text-white">Subscribe</p>
+            <p className="text-white">Send feedback</p>
           </button>
         </div>
       </div>

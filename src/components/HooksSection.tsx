@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const HooksSection = () => {
   return (
@@ -24,6 +25,11 @@ const HooksSection = () => {
               your passions.
             </p>
           </div>
+          <Link
+           href={"https://wa.me/2349110379619"}
+              target="_blank"
+              rel="noopener noreferrer"
+          >
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -31,6 +37,7 @@ const HooksSection = () => {
           >
             Learn More
           </motion.button>
+          </Link>
         </motion.div>
 
         {/* Image Side */}
@@ -76,6 +83,11 @@ const HooksSection = () => {
               game today!
 `}</p>
           </div>
+          <Link 
+           href={"https://wa.me/2349110379619"}
+              target="_blank"
+              rel="noopener noreferrer"
+          >
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -83,6 +95,7 @@ const HooksSection = () => {
           >
             Learn More
           </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

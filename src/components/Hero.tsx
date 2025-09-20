@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -37,6 +38,11 @@ const Hero = () => {
             </motion.p>
           </div>
 
+          <Link 
+              href={"https://wa.me/2349110379619"}
+              target="_blank"
+              rel="noopener noreferrer"
+          >
           <motion.button
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -45,6 +51,7 @@ const Hero = () => {
           >
             Shop Now
           </motion.button>
+          </Link>
         </motion.div>
 
         {/* Right Image */}
