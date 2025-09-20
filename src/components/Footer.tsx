@@ -138,7 +138,7 @@ const Footer = () => {
             <input
              type="text"
              name="name"
-             placeholder="Enter name"
+             placeholder="Full Name"
              value={formData.name}
              onChange={handleChange}
              required
@@ -147,7 +147,7 @@ const Footer = () => {
             <input
              type="email"
              name="email"
-             placeholder="Enter email"
+             placeholder="Email"
              value={formData.email}
              onChange={handleChange}
              required
@@ -155,7 +155,7 @@ const Footer = () => {
             />
             <textarea
               name="message"
-              placeholder="Enter Message"
+              placeholder="Feedback message"
               value={formData.message}
               onChange={handleChange}
               required
