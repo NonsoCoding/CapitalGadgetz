@@ -40,7 +40,7 @@ const About = () => {
               className="w-32 h-32 rounded-full object-cover shadow-md"
             />
             <p className="font-semibold text-lg text-gray-800">
-              Obi Ifeanyi Kasimir
+              Ifeanyi Kasimir Obi
             </p>
             <p className="text-sm text-gray-500">Founder & CEO</p>
           </motion.div>
