@@ -35,7 +35,7 @@ const About = () => {
             className="flex flex-col items-center gap-3 mt-6"
           >
             <img
-              src="./CEO.jpg" // replace with actual image path
+              src="./CEO3.jpg" // replace with actual image path
               alt="Owner"
               className="w-32 h-32 rounded-full object-cover shadow-md"
             />

@@ -2,10 +2,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper as SwiperType } from 'swiper';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { collection, onSnapshot, orderBy, query, Timestamp } from "firebase/firestore";
+import { db } from "./settings/FirebaseSettings";
 
 const testimonials = [
   {
@@ -34,8 +36,32 @@ const testimonials = [
   }
 ];
 
+interface Feedback {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  createdAt?: Timestamp | null;
+}
+
+
 const OurCustomers = () => {
+    const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
   const swiperRef = useRef<SwiperType | null>(null);
+
+   useEffect(() => {
+    const q = query(collection(db, "feedbacks"), orderBy("createdAt", "desc"));
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const feedbackData: Feedback[] = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...(doc.data() as Omit<Feedback, "id">),
+      }));
+      setFeedbacks(feedbackData);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const goToPrev = () => {
     if (swiperRef.current) {
@@ -61,56 +87,37 @@ const OurCustomers = () => {
 
         {/* Swiper Carousel */}
         <div className="relative">
-          <Swiper
-           onSwiper={(swiper) => {
+         <Swiper
+  onSwiper={(swiper) => {
     swiperRef.current = swiper;
   }}
   modules={[Navigation, Pagination, Autoplay]}
   spaceBetween={20}
-  slidesPerView={3}
-  centeredSlides={true}
-  loop={true}
+  slidesPerView={feedbacks.length === 1 ? 1 : 3}
+  centeredSlides={feedbacks.length === 1 ? false : true}
+  loop={feedbacks.length > 1}   // 👈 disable loop if only 1
   navigation={false}
-  pagination={{ 
+  pagination={{
     clickable: true,
-    bulletClass: 'swiper-pagination-bullet !bg-blue-400 !opacity-50',
-    bulletActiveClass: 'swiper-pagination-bullet-active !bg-blue-600 !opacity-100'
+    bulletClass:
+      "swiper-pagination-bullet !bg-blue-400 !opacity-50",
+    bulletActiveClass:
+      "swiper-pagination-bullet-active !bg-blue-600 !opacity-100",
   }}
-  autoplay={{ delay: 5000 }}
-  className="overflow-hidden"  
+  autoplay={feedbacks.length > 1 ? { delay: 5000 } : false} // 👈 no autoplay if only 1
+  className="overflow-hidden"
   breakpoints={{
-    320: {
-      slidesPerView: 1,        // 👈 full width on mobile
-      spaceBetween: 10,
-      centeredSlides: false
-    },
-    480: {
-      slidesPerView: 1,        // 👈 keep safe
-      spaceBetween: 15
-    },
-    640: {
-      slidesPerView: 1.5,
-      spaceBetween: 20
-    },
-    768: {
-      slidesPerView: 1.8,
-      spaceBetween: 25
-    },
-    1024: {
-      slidesPerView: 2.5,
-      spaceBetween: 30
-    },
-    1280: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    }
+    320: { slidesPerView: 1, spaceBetween: 10, centeredSlides: false },
+    640: { slidesPerView: feedbacks.length === 1 ? 1 : 1.5 },
+    1024: { slidesPerView: feedbacks.length === 1 ? 1 : 2.5 },
+    1280: { slidesPerView: feedbacks.length === 1 ? 1 : 3 },
   }}
-          >
-            {testimonials.map((t) => (
-              <SwiperSlide key={t.id}>
+>
+            {feedbacks.map((fb) => (
+              <SwiperSlide key={fb.id}>
                 {({ isActive }) => (
                   <div 
-                    className={`bg-white rounded-2xl p-4 md:p-6 lg:p-8 shadow-xl text-center relative transition-all duration-300 transform ${
+                    className={`bg-white rounded-2xl p-4 py-14 lg:py-0 md:p-6 lg:p-8 shadow-xl text-center relative transition-all duration-300 transform ${
                       isActive 
                         ? 'scale-100 opacity-100' 
                         : 'scale-90 opacity-60 blur-sm hover:opacity-80'
@@ -126,21 +133,24 @@ const OurCustomers = () => {
 
                     {/* Profile Image */}
                     <div className="mb-4 md:mb-6">
-                      <img
-                        src={t.image}
-                        alt={t.name}
-                        className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full mx-auto object-cover border-2 md:border-4 border-blue-100"
-                      />
+                     <img
+  src={`https://api.dicebear.com/7.x/identicon/svg?seed=${fb.name}`}
+  alt={fb.name}
+  className="w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto object-cover border-2 md:border-4 border-blue-100"
+/>
                     </div>
 
                     {/* Name */}
                     <h3 className="text-base md:text-lg lg:text-xl font-bold text-gray-900 mb-2 md:mb-4">
-                      {t.name}
+                      {fb.name}
                     </h3>
 
                     {/* Testimonial Text */}
                     <p className="text-gray-700 leading-relaxed text-xs md:text-sm lg:text-base px-2">
-                      {t.text}
+                      {fb.message}
+                    </p>
+                    <p className="text-gray-700 leading-relaxed text-xs md:text-sm lg:text-base px-2">
+                      {fb.createdAt?.toDate().toLocaleDateString()}
                     </p>
                   </div>
                 )}
