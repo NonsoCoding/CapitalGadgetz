@@ -56,7 +56,7 @@ const Footer = () => {
         <div className="gap-8 flex flex-col">
           <p className="text-xl font-semibold">Contact Us</p>
           <div className="flex gap-4 flex-col text-[14px]">
-            <div className="flex gap-6 text-[14px]">
+            <div className="flex gap-6 text-[14px] items-center">
               <LocationEdit />
               <p>Banex Plaza, Opposite Zenith bank, Wuse, Abuja, Nigeria</p>
             </div>
@@ -76,7 +76,7 @@ const Footer = () => {
               </div>
             </div>
             </div>
-            <div className="flex gap-6">
+            <div className="flex gap-6 items-center">
               <Mail />
               <Link
               href={"mailto:capitalgadgetz@gmail.com"}
