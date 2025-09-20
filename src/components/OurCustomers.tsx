@@ -105,7 +105,7 @@ const OurCustomers = () => {
       "swiper-pagination-bullet-active !bg-blue-600 !opacity-100",
   }}
   autoplay={feedbacks.length > 1 ? { delay: 5000 } : false} // 👈 no autoplay if only 1
-  className="overflow-hidden"
+  className=""
   breakpoints={{
     320: { slidesPerView: 1, spaceBetween: 15, centeredSlides: false },
     640: { slidesPerView: feedbacks.length === 1 ? 1 : 1.5 },
